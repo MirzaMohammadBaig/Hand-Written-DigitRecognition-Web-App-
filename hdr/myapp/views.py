@@ -16,23 +16,7 @@ model = tf.keras.models.load_model('./MLModels/hdr.h5')
 
 def index(request ):
     return render(request, 'index.html') 
-def login(request):
-    name = 'admin'
-    pass1 = 'pass'
-    
-    nameH = request.POST.files.get('name')
-    pw = request.POST['pass']
 
-    if name==nameH and pass1==pw :
-        context = {
-            'user': name,
-             'text':'You are wellcome'
-        }
-        return render(request, 'welcomepage.html', context)
-    else:
-        return HttpResponse('<h1>Incorrect name/password</h1>')
-    # pass = request.GET['pass']
-    return ('<h1>Welcome</h1>')
 def recognize(request):
     
     
