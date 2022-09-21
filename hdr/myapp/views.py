@@ -21,14 +21,7 @@ def recognize(request):
     
     
     
-# img = cv2.imread('C:/Users/Mirza mohammed baig/AppData/Local/Programs/Python/Python39/Lib/site-packages/matplotlib/nine.png')
-    # img = cv2.imread('C:/Users/Mirza mohammed baig/Downloads/New folder (4)/nine.png')
-    # img = cv2.imread(request.GET['file'])
-    # img = request.GET['file']
-    # from email.mime import image
-    # from PIL import Image;
-    # imp = Image.open('index1.jpg')
-    # imp.show()
+
     if request.method == 'POST':
         # data = request.POST
          print('yepp')
@@ -39,17 +32,15 @@ def recognize(request):
             # create a new instance of FileSystemStorage
             fs = FileSystemStorage()
             file = fs.save(request_file.name, request_file)
-            # the fileurl variable now contains the url to the file. This can be used to serve the file when needed.
+           
             fileurl = fs.url(file)
             print(fileurl)
             img = cv2.imread('./static/'+fileurl)
             
-            # img = Image.open(request.fi.GET['file'])
+           
         
             IMG_SIZE = 28
-            # print('mirza')
-            # print(img)
-            # print(type(img))
+           
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             resized = cv2.resize(gray, (28,28), interpolation = cv2.INTER_AREA)
             newimg1 = tf.keras.utils.normalize(resized, axis = 1)
